@@ -15,7 +15,7 @@ namespace SingleResponsibilityPrinciple
             this.tradeMapper = tradeMapper;
         }
 
-        IEnumerable<Contracts.TradeRecord> ITradeParser.Parse(IEnumerable<string> tradeData)
+        public IEnumerable<Contracts.TradeRecord> Parse(IEnumerable<string> tradeData)
         {
             var trades = new List<TradeRecord>();
             var lineCount = 1;
