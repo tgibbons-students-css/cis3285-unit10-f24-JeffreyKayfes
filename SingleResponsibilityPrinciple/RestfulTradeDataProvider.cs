@@ -36,13 +36,23 @@ namespace SingleResponsibilityPrinciple
             return tradesString;
         }
 
-        public IEnumerable<string> GetTradeData()
+        public async Task<IEnumerable<string>> GetTradeData()
         {
-            Task<List<string>> task = Task.Run(() => GetTradeAsync());
-            task.Wait();
+            //Task<List<string>> task = Task.Run(() => GetTradeAsync());
+            //task.Wait();
 
-            List<string> tradeList = task.Result;
-            return tradeList;
+            //List<string> tradeList = task.Result;
+            //return tradeList;
+
+            try
+            {
+                return await GetTradeAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning($"Failed to fetch trade data: {ex.Message}");
+                return await Task.FromResult(new List<string>());
+            }
         }
     }
 }

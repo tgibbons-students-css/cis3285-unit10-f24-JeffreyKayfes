@@ -22,7 +22,7 @@ namespace SingleResponsibilityPrinciple.Tests
 
 
         [TestMethod()]
-        public void TestSize1()
+        public async Task TestSize1()
         {
             //Arrange
             ILogger logger = new ConsoleLogger();
@@ -32,14 +32,14 @@ namespace SingleResponsibilityPrinciple.Tests
             ITradeDataProvider tradeProvider = new StreamTradeDataProvider(tradeStream, logger);
 
             //Act
-            IEnumerable<string> trades = tradeProvider.GetTradeData();
+            IEnumerable<string> trades = await tradeProvider.GetTradeData();
 
             //Assert
  
             Assert.AreEqual(countStrings(trades), 1);
         }
         [TestMethod()]
-        public void TestSize5()
+        public async Task TestSize5()
         {
             //Arrange
             ILogger logger = new ConsoleLogger();
@@ -49,7 +49,7 @@ namespace SingleResponsibilityPrinciple.Tests
             ITradeDataProvider tradeProvider = new StreamTradeDataProvider(tradeStream, logger);
 
             //Act
-            IEnumerable<string> trades = tradeProvider.GetTradeData();
+            IEnumerable<string> trades = await tradeProvider.GetTradeData();
 
             //Assert
 

@@ -16,9 +16,9 @@ namespace SingleResponsibilityPrinciple
             this.origProvider = origProvider;
         }
 
-        public IEnumerable<string> GetTradeData()
+        public async Task<IEnumerable<string>> GetTradeData()
         {
-            IEnumerable<string> lines = origProvider.GetTradeData();
+            IEnumerable<string> lines = await origProvider.GetTradeData();
 
             List<string> result = new List<string>();
 

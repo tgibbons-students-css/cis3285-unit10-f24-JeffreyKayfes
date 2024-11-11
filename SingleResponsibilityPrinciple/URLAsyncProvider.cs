@@ -16,11 +16,13 @@ namespace SingleResponsibilityPrinciple
             this.baseProvider = baseProvider;
         }
 
-        public IEnumerable<string> GetTradeData()
+        public async Task<IEnumerable<string>> GetTradeData()
         {
-            var task = Task.Run(() => baseProvider.GetTradeData());
+            //var task = Task.Run(() => baseProvider.GetTradeData());
 
-            return task.Result;
+            //return task.Result;
+
+            return await baseProvider.GetTradeData();
         }
     }
 }

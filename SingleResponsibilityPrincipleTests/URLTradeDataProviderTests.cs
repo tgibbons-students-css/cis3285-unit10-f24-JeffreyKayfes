@@ -20,7 +20,7 @@ namespace SingleResponsibilityPrinciple.Tests
 
 
         [TestMethod()]
-        public void TestSize1()
+        public async Task TestSize1()
         {
             //Arrange
             ILogger logger = new ConsoleLogger();
@@ -29,7 +29,7 @@ namespace SingleResponsibilityPrinciple.Tests
             ITradeDataProvider tradeProvider = new URLTradeDataProvider(tradeURL, logger);
 
             //Act
-            IEnumerable<string> trades = tradeProvider.GetTradeData();
+            IEnumerable<string> trades = await tradeProvider.GetTradeData();
 
             //Assert
 
